@@ -43,8 +43,8 @@ def parse_response(response):
 def main():
     response = fetch_updates()
     grouped_responses = parse_response(response)
-    
 
+    
     
 
 
