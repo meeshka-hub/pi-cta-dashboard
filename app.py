@@ -1,17 +1,13 @@
 import os
 from dotenv import load_dotenv
+from datetime import datetime
 import json
 
 import requests
 
 import constants
 
-def is_northbound(w):
-    return w['trDr'] == '1'
-
-def is_southbound(w):
-    return w['trDr'] == '5'
-
+# --- Functional utility ---
 
 def fetch_updates():
     load_dotenv()
@@ -31,20 +27,38 @@ def fetch_updates():
         print("Error:", e)
         return None
     
-def parse_response(response): 
-    eta_array = response['ctatt']['eta']
-    northbound = list(filter(is_northbound, eta_array))
-    southbound = list(filter(is_southbound, eta_array))
-    return {
-        "north": northbound, 
-        "south": southbound
-    }
-    
-def main():
-    response = fetch_updates()
-    grouped_responses = parse_response(response)
 
+def calculate_eta(run_info):
+    est_arr_time = datetime.fromisoformat(run_info['arrT'])
+    pred_gen_time = datetime.fromisoformat(run_info['prdt'])
+
+    return str(est_arr_time - pred_gen_time )
+
+def parse_trains(eta_arr):
+    current_trains = []
+    for run_info in eta_arr:
+        current_trains.append(TrainInfo(run_info))
+
+    return current_trains
+
+
+# --- Train objects --- 
+
+class TrainInfo:
+    def __init__(self, run_info):
+        for key in run_info:
+            setattr(self, key, run_info[key]) 
+        self.eta_in_mins = calculate_eta(run_info)
     
+
+# --- Main ---
+
+def main():
+    raw_api_response = fetch_updates()
+    # Check for in-payload error codes here
+    trains = parse_trains(raw_api_response['ctatt']['eta'])
+    
+
     
 
 
