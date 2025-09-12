@@ -143,3 +143,14 @@ STP_ID = {
     "Western (Orange Line)": 40310,
     "Wilson": 40540,
 }
+
+colors = {
+    "Brown": "#62361b",
+    "Red": "#c60c30",
+    "Blue": "#1e90ff",
+    "Green": "#2e8b57",
+    "Orange": "#ff8c00",
+    "Purple": "#800080",
+    "Pink": "#ff69b4",
+    "Yellow": "#ffd700",
+}
