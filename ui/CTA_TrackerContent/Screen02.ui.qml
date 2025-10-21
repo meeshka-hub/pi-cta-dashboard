@@ -7,6 +7,7 @@ Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on
 
 import QtQuick
 import QtQuick.Controls
+import '../CTA_Tracker'
 
 Rectangle {
     width: Constants.width

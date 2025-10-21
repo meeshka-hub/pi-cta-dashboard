@@ -29,4 +29,3 @@ ruff==0.12.11
 shiboken6==6.9.2
 urllib3==2.5.0
 virtualenv==20.34.0
-pyqt6-tools

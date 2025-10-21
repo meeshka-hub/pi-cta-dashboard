@@ -22,6 +22,7 @@ import constants as constants
 # --- Functional utility ---
 
 
+
 def fetch_train_updates(stop_id):
     load_dotenv()
     base_url = f"http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key={os.getenv('EL_API_KEY')}&mapid={stop_id}&outputType=JSON"
@@ -205,7 +206,7 @@ class Backend(QObject):
 
     line = Property(str, getLine, notify=lineChanged)
 
-    def aggregate_unique_colors(self):
+    def _aggregate_unique_colors(self):
         seen_colors = set()
         for train in self._train_model.getAllTrains():
             line = train["rt"]

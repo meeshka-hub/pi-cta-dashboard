@@ -4,6 +4,7 @@ import QtQuick
 QtObject {
     readonly property int width: 1280
     readonly property int height: 720
+    readonly property int statusBarHeight: 50
 
     property string relativeFontDirectory: "fonts"
 
@@ -20,7 +21,7 @@ QtObject {
     readonly property color backgroundColor: "#EAEAEA"
 
 
-    property Application application: Application {
-        fontPath: Qt.resolvedUrl("../CTA_TrackerContent/" + relativeFontDirectory)
-    }
+    // property StudioApplication application: StudioApplication {
+    //     fontPath: Qt.resolvedUrl("../CTA_TrackerContent/" + relativeFontDirectory)
+    // }
 }
