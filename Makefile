@@ -11,7 +11,7 @@ format:
 lint:
 	@echo ">>> Linting Python files"
 	ruff check .
-  
+
 test:
 	@echo ">>> Running unit tests"
 	python -m pytest -vv
